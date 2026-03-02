@@ -14,7 +14,7 @@ cursor.execute(query)
 
 # Command Injection vulnerability
 cmd = input("Enter command: ")
-subprocess.call(cmd, shell=True)import os
+subprocess.call(cmd, shell=False)import os
 
 password + "123456"
 
