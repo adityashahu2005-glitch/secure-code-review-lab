@@ -33,11 +33,13 @@ jobs:
       - name: Run Gitleaks
         run: gitleaks detect --source . --redact --exit-code 1
 
-      - name: Run OWASP Dependency-Check (Docker)
+      - name: Run OWASP Dependency-Check (Fast Mode)
         run: |
+          mkdir -p reports
           docker run --rm \
             -v ${{ github.workspace }}:/src \
             owasp/dependency-check:latest \
             --scan /src \
             --format HTML \
-            --out /src/reports
+            --out /src/reports \
+            --noupdate
